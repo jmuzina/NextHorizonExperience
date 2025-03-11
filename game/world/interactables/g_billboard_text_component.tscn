@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdg0b4vllc1p4"]
+
+[ext_resource type="Script" path="res://game/world/interactables/g_billboard_text_component.gd" id="1_rvwln"]
+[ext_resource type="Script" path="res://game/world/interactables/billboard.gd" id="2_xuary"]
+
+[node name="GFloatingText" type="Node3D"]
+script = ExtResource("1_rvwln")
+
+[node name="CurrentText" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+ignore_occlusion_culling = true
+text = "TEXT"
+font_size = 16
+autowrap_mode = 3
+width = 600.0
+script = ExtResource("2_xuary")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
