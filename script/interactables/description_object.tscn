@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://g6rpin1hdmdq"]
+
+[ext_resource type="Script" path="res://script/interactables/dialogue_object.gd" id="1_4t7e0"]
+[ext_resource type="Material" uid="uid://dpip4gdun5tc8" path="res://world/materials/outline.tres" id="1_16lul"]
+[ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://script/interactables/g_billboard_text_component.tscn" id="2_2qs8k"]
+[ext_resource type="Script" path="res://script/interactables/g_use_component.gd" id="3_35yeh"]
+[ext_resource type="Texture2D" uid="uid://danhkkqr2voqs" path="res://world/denizens/tex/T_DiamondSona.png" id="4_h1360"]
+[ext_resource type="Resource" uid="uid://d152wxgqdvi6o" path="res://world/denizens/Dialogue/DL_DiamondSona_00.tres" id="6_uo2ao"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cn6sh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_flue6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ui5a2"]
+size = Vector3(1.39258, 2.59704, 1.57251)
+
+[node name="DescriptionObject" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00936151, 0.0155412, 0.00316596)
+script = ExtResource("1_4t7e0")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_cn6sh")
+skeleton = NodePath("../HoverOutline")
+
+[node name="HoverOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00248957, -0.00674486, 0.00322747)
+visible = false
+mesh = SubResource("BoxMesh_flue6")
+surface_material_override/0 = ExtResource("1_16lul")
+
+[node name="UseTrigger" type="StaticBody3D" parent="." node_paths=PackedStringArray("Outlines")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_35yeh")
+Outlines = [NodePath("../HoverOutline")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UseTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648622, 0)
+shape = SubResource("BoxShape3D_ui5a2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880853, 0)
+pixel_size = 0.007
+billboard = 1
+texture = ExtResource("4_h1360")
+
+[node name="GFloatingText" parent="." instance=ExtResource("2_2qs8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00748575, 1.70771, 0)
+DiaPassages = ExtResource("6_uo2ao")

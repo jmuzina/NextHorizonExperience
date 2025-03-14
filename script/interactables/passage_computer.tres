@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bx8dwg4y2auf8"]
+
+[ext_resource type="Script" path="res://script/interactables/g_billboard_passages.gd" id="1_khpey"]
+
+[resource]
+script = ExtResource("1_khpey")
+Passages = Array[String]([])
+branch_end = false
+Options = {}

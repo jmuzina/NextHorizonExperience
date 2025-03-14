@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo100t4327o1q"]
+
+[ext_resource type="Script" path="res://script/interactables/g_use_component.gd" id="1_oqlc1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23pe3"]
+size = Vector3(4.1875, 1.14844, 3.47363)
+
+[node name="Area3D" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_oqlc1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_23pe3")

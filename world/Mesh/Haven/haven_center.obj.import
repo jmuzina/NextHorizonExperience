@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0jvqmeoijc05"
+path="res://.godot/imported/haven_center.obj-23ed675dc20d60f30fb3a7fd9ff594b1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/haven_center.obj-23ed675dc20d60f30fb3a7fd9ff594b1.mesh"]
+
+source_file="res://world/Mesh/Haven/haven_center.obj"
+dest_files=["res://.godot/imported/haven_center.obj-23ed675dc20d60f30fb3a7fd9ff594b1.mesh", "res://.godot/imported/haven_center.obj-23ed675dc20d60f30fb3a7fd9ff594b1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

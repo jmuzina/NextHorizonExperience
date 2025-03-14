@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7mb4gebtpth4"]
+
+[ext_resource type="ArrayMesh" uid="uid://csxjuq7v78db4" path="res://world/Mesh/creachur.obj" id="1_1oaw6"]
+[ext_resource type="Material" uid="uid://bfthnwjdkohet" path="res://world/Mesh/netplayer_mat.tres" id="1_357r2"]
+[ext_resource type="Script" path="res://script/network/network_player.gd" id="1_n438t"]
+
+[node name="NetworkPlayer" type="Node3D"]
+script = ExtResource("1_n438t")
+
+[node name="NetPlayer_Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433879, 0.991972, 0)
+material_override = ExtResource("1_357r2")
+mesh = ExtResource("1_1oaw6")
