@@ -60,6 +60,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_crouch_toggle"):
 		_crouch_toggle()
 		
+	if Input.is_action_just_pressed("player_num_1"):
+		_notify_interact(1)
+	if Input.is_action_just_pressed("player_num_2"):
+		_notify_interact(2)
+	if Input.is_action_just_pressed("player_num_3"):
+		_notify_interact(3)
+	if Input.is_action_just_pressed("player_num_4"):
+		_notify_interact(4)
+	if Input.is_action_just_pressed("player_num_5"):
+		_notify_interact(5)
+		
 func _calculate_look(delta: float) -> void:
 	var mouseInversions: Vector2 = Vector2(-1 if invert_mouse_x else 1, -1 if invert_mouse_y else 1)
 	
@@ -103,13 +114,13 @@ func _calculate_movement(delta: float) -> void:
 func _notify_player_look() -> void:
 	if $Camera3D/RayCast3D.is_colliding():
 		var obj = $Camera3D/RayCast3D.get_collider()
-		obj.player_lookat()
+		obj.player_lookat(self)
 		interactable_looked_at = obj
 	elif interactable_looked_at != null:
-		interactable_looked_at.player_stop_look()
+		interactable_looked_at.player_stop_look(self)
 		interactable_looked_at = null
 
-func _notify_interact() -> void:
+func _notify_interact(mod_value: int = 0) -> void:
 	if $Camera3D/RayCast3D.is_colliding():
 		
 		print("colliding with ", $Camera3D/RayCast3D.get_collider().name)

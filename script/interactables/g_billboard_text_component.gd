@@ -5,6 +5,7 @@ signal OnTextEnd
 
 #array of g_billboard_passages 
 @export var DiaPassages: Resource
+var Prev_Passages: Resource = null
 var index: int = -1
 
 var CurrentText: String = ""
@@ -23,7 +24,7 @@ func _ready() -> void:
 			"Oh, I seem to have misplaced my script. Goodness, this is embarassing!",
 		 	"Please tell Hex about this, she can make me a new one.", 
 			"You may want to screenshot this next bit for her.",
-			"ACTOR: %s, PREV_SCRIPT: %s, UUID: %s" % [name, "%TODO!!!%", str(get_instance_id()),],
+			"ACTOR: %s, PREV_LINES: %s, UUID: %s" % [name, "%TODO!!!%", str(get_instance_id()),],
 			"*Suddenly, you hear Hex's voice...*",
 			"\"And don't forget to say Thank You on the way out!\""
 			]
@@ -34,7 +35,7 @@ func _ready() -> void:
 		t.set_passages(msg)
 		DiaPassages = t
 
-func object_interacted() -> void:
+func object_interacted(modifer: int = 0) -> void:
 	print("Text triggered via interaction")
 	continue_text()
 
@@ -51,7 +52,7 @@ func continue_text():
 	CurrentCharIdx = 0
 	if index < DiaPassages.Passages.size():
 		begin_text()
-	else:		end_text()
+	else:	end_text()
 	
 func end_text():
 	if DiaPassages.branch_end:
