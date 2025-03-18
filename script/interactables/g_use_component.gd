@@ -14,12 +14,12 @@ func player_lookat(player: Node3D) -> void:
 	for o in Outlines:
 		o.visible = true
 	for ch in get_parent().get_children():
-		if ch.has_method("player_looking"):
-			ch.player_looking(player)
+		if ch.has_method("player_mouseover"):
+			ch.player_mouseover(player)
 
 func player_stop_look(player: Node3D) -> void:
 	for o in Outlines:
 		o.visible = false
 	for ch in get_parent().get_children():
-		if ch.has_method("player_stop_look"):
-			ch.player_stop_look(player)
+		if ch.has_method("player_mouseover_end"):
+			ch.player_mouseover_end(player)

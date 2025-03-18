@@ -30,7 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _init() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
+
 func _ready() -> void:
 	stand_height = ($CollisionShape3D.shape as CapsuleShape3D).height
 	$Camera3D.rotation = Vector3(0,0,0)
@@ -40,14 +41,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	mouse_input = Vector2.ZERO
 	%TextCam.global_transform = $Camera3D.global_transform
-	
-	
 
 func _physics_process(delta: float) -> void:
 	_calculate_movement(delta)
 	_calculate_look(delta)
 	
-	_notify_player_look()
+	_notify_player_look() 	
 	
 	if Input.is_action_just_pressed("player_interact"):
 		_notify_interact()
@@ -125,7 +124,7 @@ func _notify_interact(mod_value: int = 0) -> void:
 		
 		print("colliding with ", $Camera3D/RayCast3D.get_collider().name)
 		var obj = $Camera3D/RayCast3D.get_collider()
-		obj.use_object()
+		obj.use_object(mod_value)
 
 #todo: crouch
 func _crouch() -> void:
@@ -143,6 +142,16 @@ func _crouch_toggle() -> void:
 		_stand()
 	else:
 		_crouch()
+
+func set_player_input_prompt(str):
+	%DialogueOptions.text = str
+	%DialogueOptions.visible = true
+	%ExplainPrompt.visible = true
+
+func clear_player_input_prompt():
+	%DialogueOptions.text = ""
+	%DialogueOptions.visible = false
+	%ExplainPrompt.visible = false
 
 #Stairs logic, stolen basically wholesale from https://youtu.be/Tb-R3l0SQdc?si=0cWy6AenjvXxH0K8. remember to credit.
 

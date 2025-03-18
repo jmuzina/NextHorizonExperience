@@ -66,6 +66,7 @@ fov = 90.0
 far = 15.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = -199.0
 offset_top = -132.0
 offset_right = 838.0
@@ -73,17 +74,29 @@ offset_bottom = 579.0
 texture = ExtResource("2_rc5qc")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="DialogueOptions" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 29.0
-offset_top = 350.0
+offset_top = 346.0
 offset_right = 578.0
-offset_bottom = 447.0
+offset_bottom = 443.0
 theme = ExtResource("3_hican")
 text = "1: Say Thing
 2: Say Thing
 3: say thing
 4: say thing
 5: say thing"
+vertical_alignment = 3
+
+[node name="ExplainPrompt" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 29.0
+offset_top = 330.0
+offset_right = 578.0
+offset_bottom = 346.0
+theme = ExtResource("3_hican")
+theme_override_font_sizes/font_size = 11
+text = "(Select by using number keys)"
 vertical_alignment = 3
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]

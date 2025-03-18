@@ -16,5 +16,10 @@ outline_size = 10
 autowrap_mode = 3
 width = 400.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TypewriteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.05
+
+[node name="TimeoutTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0

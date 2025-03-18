@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://g6rpin1hdmdq"]
+[gd_scene load_steps=9 format=3 uid="uid://g6rpin1hdmdq"]
 
 [ext_resource type="Script" path="res://script/interactables/dialogue_object.gd" id="1_4t7e0"]
 [ext_resource type="Material" uid="uid://dpip4gdun5tc8" path="res://world/materials/outline.tres" id="1_16lul"]
 [ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://script/interactables/g_billboard_text_component.tscn" id="2_2qs8k"]
 [ext_resource type="Script" path="res://script/interactables/g_use_component.gd" id="3_35yeh"]
 [ext_resource type="Texture2D" uid="uid://danhkkqr2voqs" path="res://world/denizens/tex/T_DiamondSona.png" id="4_h1360"]
-[ext_resource type="Resource" uid="uid://d152wxgqdvi6o" path="res://world/denizens/Dialogue/DL_DiamondSona_00.tres" id="6_uo2ao"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cn6sh"]
 
@@ -47,4 +46,3 @@ texture = ExtResource("4_h1360")
 
 [node name="GFloatingText" parent="." instance=ExtResource("2_2qs8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00748575, 1.70771, 0)
-DiaPassages = ExtResource("6_uo2ao")
