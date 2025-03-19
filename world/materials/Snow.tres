@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c7sn0ile3iolo"]
+
+[ext_resource type="Texture2D" uid="uid://cblmrjry4tmsx" path="res://world/areas/exterior/snow_02_diff_4k.jpg" id="1_1rhgu"]
+
+[resource]
+resource_name = "Snow"
+albedo_texture = ExtResource("1_1rhgu")
+metallic = 0.5

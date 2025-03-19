@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://4l623g6pkg1h"]
+
+[ext_resource type="Texture2D" uid="uid://bagmtdq0cck3l" path="res://world/areas/exterior/rock_wall_13_diff_4k.jpg" id="1_r14m3"]
+
+[resource]
+resource_name = "Siding"
+albedo_texture = ExtResource("1_r14m3")
+metallic = 0.5

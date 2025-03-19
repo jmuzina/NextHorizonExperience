@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.5
 cull_mask = 1048573
 current = true
 fov = 90.0
-far = 15.0
+far = 10.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)
@@ -76,6 +76,7 @@ expand_mode = 2
 
 [node name="DialogueOptions" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 offset_left = 29.0
 offset_top = 346.0
 offset_right = 578.0
@@ -90,6 +91,7 @@ vertical_alignment = 3
 
 [node name="ExplainPrompt" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 offset_left = 29.0
 offset_top = 330.0
 offset_right = 578.0

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bg5nnjcfm67yu"
+path="res://.godot/imported/stand.obj-256396331fda3a3a4abafb99f17d1020.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stand.obj-256396331fda3a3a4abafb99f17d1020.mesh"]
+
+source_file="res://world/Mesh/stand.obj"
+dest_files=["res://.godot/imported/stand.obj-256396331fda3a3a4abafb99f17d1020.mesh", "res://.godot/imported/stand.obj-256396331fda3a3a4abafb99f17d1020.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.9, 0.9, 0.9)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

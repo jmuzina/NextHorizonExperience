@@ -1,17 +1,7 @@
-# Blender 4.3.2 MTL File: 'center.blend'
+# Blender 4.3.2 MTL File: 'zoo_townExterior.blend'
 # www.blender.org
 
-newmtl Grate
-Ns 360.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-
-newmtl Stone
+newmtl Siding
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -19,9 +9,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd /home/natalie/extern/Repos/Godot/NextHorizonExperience/world/materials/texture/stone01.png
+map_Kd rock_wall_13_diff_4k.jpg
 
-newmtl Wood
+newmtl Snow
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -29,4 +19,14 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd /home/natalie/extern/Repos/Godot/NextHorizonExperience/world/Mesh/WoodPlanks-0617.jpg
+map_Kd snow_02_diff_4k.jpg
+
+newmtl StoneRoad
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd pavement_04_diff_4k.jpg
