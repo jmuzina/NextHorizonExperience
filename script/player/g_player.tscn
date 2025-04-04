@@ -105,3 +105,6 @@ vertical_alignment = 3
 offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 3
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.689964, 0.626744, 0.559216, 1)

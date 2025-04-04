@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://baruumxc155ky"
+path="res://.godot/imported/Haven.7.map-8ec85019f55332ff4107a7a8ca64f95e.tres"
+
+[deps]
+
+source_file="res://map/autosave/Haven.7.map"
+dest_files=["res://.godot/imported/Haven.7.map-8ec85019f55332ff4107a7a8ca64f95e.tres"]
+
+[params]
+

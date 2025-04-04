@@ -1,0 +1,60 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://xqkaptdt4f6p"]
+
+[ext_resource type="Texture2D" uid="uid://dp6glctrwc43b" path="res://UI/check_x.png" id="1_egg2u"]
+[ext_resource type="FontFile" uid="uid://dhkuel4fetba0" path="res://UI/ChevyRay - Magic Book.ttf" id="1_photo"]
+[ext_resource type="FontFile" uid="uid://bciu6qm4pk32y" path="res://UI/ChevyRay - Express.ttf" id="2_7430l"]
+[ext_resource type="Texture2D" uid="uid://74yi63hg3cl7" path="res://UI/check_no.png" id="2_xq4hf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omqp2"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.299547, 0.299547, 0.299547, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej1hf"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.299547, 0.299547, 0.299547, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[resource]
+CheckBox/icons/checked = ExtResource("1_egg2u")
+CheckBox/icons/unchecked = ExtResource("2_xq4hf")
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_photo")
+LineEdit/font_sizes/font_size = 9
+LineEdit/fonts/font = ExtResource("2_7430l")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_omqp2")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_ej1hf")
+LineEdit/styles/read_only = null
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = null

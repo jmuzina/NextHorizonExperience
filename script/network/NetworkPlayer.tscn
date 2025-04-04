@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7mb4gebtpth4"]
+[gd_scene load_steps=5 format=3 uid="uid://b7mb4gebtpth4"]
 
 [ext_resource type="ArrayMesh" uid="uid://csxjuq7v78db4" path="res://world/Mesh/creachur.obj" id="1_1oaw6"]
 [ext_resource type="Material" uid="uid://bfthnwjdkohet" path="res://world/Mesh/netplayer_mat.tres" id="1_357r2"]
 [ext_resource type="Script" path="res://script/network/network_player.gd" id="1_n438t"]
+[ext_resource type="FontFile" uid="uid://0ccti3hbp8kw" path="res://UI/ChevyRay - Lantern.ttf" id="4_pugi6"]
 
 [node name="NetworkPlayer" type="Node3D"]
 script = ExtResource("1_n438t")
@@ -11,3 +12,12 @@ script = ExtResource("1_n438t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433879, 0.991972, 0)
 material_override = ExtResource("1_357r2")
 mesh = ExtResource("1_1oaw6")
+
+[node name="Name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63969, 0)
+billboard = 1
+texture_filter = 0
+render_priority = 2
+outline_render_priority = 1
+text = "PlayerName"
+font = ExtResource("4_pugi6")

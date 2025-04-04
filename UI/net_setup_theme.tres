@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dcashv8k2dmnx"]
+
+[ext_resource type="FontFile" uid="uid://0ccti3hbp8kw" path="res://UI/ChevyRay - Lantern.ttf" id="1_682kr"]
+[ext_resource type="FontFile" uid="uid://xv2oxpf58qd6" path="res://UI/ChevyRay - Curse.ttf" id="1_qorel"]
+[ext_resource type="Texture2D" uid="uid://bsbp8y2vfu15c" path="res://UI/panelguy.png" id="3_f28si"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsgy2"]
+texture = ExtResource("3_f28si")
+
+[resource]
+Button/font_sizes/font_size = 14
+Button/fonts/font = ExtResource("1_682kr")
+Button/styles/normal = null
+Label/font_sizes/font_size = 14
+Label/fonts/font = ExtResource("1_qorel")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = SubResource("StyleBoxTexture_lsgy2")

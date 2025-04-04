@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cv852s8tjsxab"]
+
+[ext_resource type="FontFile" uid="uid://dhkuel4fetba0" path="res://UI/ChevyRay - Magic Book.ttf" id="1_78r3x"]
+
+[resource]
+font = ExtResource("1_78r3x")
+font_size = 15

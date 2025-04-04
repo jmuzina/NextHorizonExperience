@@ -1,0 +1,258 @@
+[gd_scene load_steps=15 format=3 uid="uid://clc8l3jtfkvfp"]
+
+[ext_resource type="PackedScene" uid="uid://c8s0wkmggt7g" path="res://script/network/network_player_preview.tscn" id="1_k7vjn"]
+[ext_resource type="Theme" uid="uid://dcashv8k2dmnx" path="res://UI/net_setup_theme.tres" id="1_q0ai7"]
+[ext_resource type="Script" path="res://script/network/net_player_setup.gd" id="2_4japy"]
+[ext_resource type="Theme" uid="uid://xqkaptdt4f6p" path="res://UI/net_setup_theme_main.tres" id="2_healf"]
+[ext_resource type="Texture2D" uid="uid://c7fyy25685wqa" path="res://UI/wood02.jpg" id="2_xw11k"]
+[ext_resource type="Script" path="res://script/network/ip_override.gd" id="4_8hm4i"]
+[ext_resource type="FontFile" uid="uid://dhkuel4fetba0" path="res://UI/ChevyRay - Magic Book.ttf" id="4_b0bn7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_air3g"]
+texture = ExtResource("2_xw11k")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f1ie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvax0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_683q3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25ws8"]
+bg_color = Color(0.150433, 0.21666, 0.27577, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.721569)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va7qa"]
+bg_color = Color(0.082659, 0.12763, 0.167743, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.721569)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s2v5"]
+bg_color = Color(0.202161, 0.283707, 0.356547, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.721569)
+shadow_size = 3
+
+[node name="NetPlayerSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q0ai7")
+script = ExtResource("2_4japy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_air3g")
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="ContentMargin/MainContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ContentMargin/MainContainer/TitleMargin"]
+layout_mode = 2
+text = "Decide your appearance, friend."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="ContentMargin/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_b0bn7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7f1ie")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_dvax0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_683q3")
+context_menu_enabled = false
+caret_blink = true
+script = ExtResource("4_8hm4i")
+
+[node name="MenuPanel" type="Panel" parent="ContentMargin/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_healf")
+
+[node name="MenuMargins" type="MarginContainer" parent="ContentMargin/MainContainer/MenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="MenuDivider" type="HBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins"]
+layout_mode = 2
+alignment = 1
+
+[node name="Inputs" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="NameQuery" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs"]
+layout_mode = 2
+
+[node name="Query" type="Label" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery"]
+layout_mode = 2
+text = "Your name?"
+
+[node name="Input" type="HBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery"]
+layout_mode = 2
+
+[node name="Spacer" type="MarginContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input"]
+layout_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Quindarious"
+max_length = 32
+caret_blink = true
+
+[node name="ColorQuery" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs"]
+layout_mode = 2
+
+[node name="Query" type="Label" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery"]
+layout_mode = 2
+text = "Your color (Hex Code)?"
+
+[node name="Input" type="HBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery"]
+layout_mode = 2
+
+[node name="Spacer" type="MarginContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input"]
+layout_mode = 2
+
+[node name="HexInput" type="LineEdit" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "#123456"
+max_length = 32
+caret_blink = true
+
+[node name="PainQuery" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs"]
+layout_mode = 2
+
+[node name="Query" type="Label" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery"]
+layout_mode = 2
+text = "You accept the possibility of pain and seizure."
+
+[node name="Input" type="HBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery"]
+layout_mode = 2
+
+[node name="Spacer" type="MarginContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery/Input"]
+layout_mode = 2
+
+[node name="PainInput" type="CheckBox" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery/Input"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PreviewContainer" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider"]
+layout_mode = 2
+
+[node name="PreviewLabel" type="Label" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+text = "This shall be your form."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RenderMargins" type="MarginContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer"]
+layout_mode = 2
+
+[node name="ModelRender" type="SubViewportContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(80, 80)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0102972, 0.8)
+current = true
+fov = 31.8256
+
+[node name="NetworkPlayer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport" instance=ExtResource("1_k7vjn")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.7, -1.92)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
+transform = Transform3D(0.530703, 0.654081, -0.53901, 0, 0.635957, 0.771724, 0.847558, -0.409557, 0.337505, 0, 1.68234, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13967, 0, -1.12655)
+light_energy = 0.7
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
+layers = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport/CSGCombiner3D"]
+size = Vector3(5, 5, 5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport/CSGCombiner3D/CSGBox3D"]
+operation = 2
+size = Vector3(4, 4, 4)
+
+[node name="MarginContainer3" type="MarginContainer" parent="ContentMargin/MainContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Start" type="Button" parent="ContentMargin/MainContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_25ws8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_va7qa")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7s2v5")
+text = "ENTER"
+
+[connection signal="focus_entered" from="ContentMargin/MainContainer/NameInput" to="ContentMargin/MainContainer/NameInput" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentMargin/MainContainer/NameInput" to="ContentMargin/MainContainer/NameInput" method="_on_focus_exited"]
+[connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input/NameInput" to="." method="_on_name_text_submitted"]
+[connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input/HexInput" to="." method="_on_hex_text_submitted"]
+[connection signal="toggled" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery/Input/PainInput" to="." method="_on_pain_toggled"]
+[connection signal="pressed" from="ContentMargin/MainContainer/MarginContainer3/Start" to="." method="_on_start_pressed"]
