@@ -89,7 +89,7 @@ text = "Decide your appearance, friend."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NameInput" type="LineEdit" parent="ContentMargin/MainContainer"]
+[node name="IPInput" type="LineEdit" parent="ContentMargin/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_b0bn7")
@@ -250,8 +250,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_va7qa")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7s2v5")
 text = "ENTER"
 
-[connection signal="focus_entered" from="ContentMargin/MainContainer/NameInput" to="ContentMargin/MainContainer/NameInput" method="_on_focus_entered"]
-[connection signal="focus_exited" from="ContentMargin/MainContainer/NameInput" to="ContentMargin/MainContainer/NameInput" method="_on_focus_exited"]
+[connection signal="focus_entered" from="ContentMargin/MainContainer/IPInput" to="ContentMargin/MainContainer/IPInput" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentMargin/MainContainer/IPInput" to="ContentMargin/MainContainer/IPInput" method="_on_focus_exited"]
+[connection signal="text_submitted" from="ContentMargin/MainContainer/IPInput" to="." method="_on_ip_text_submitted"]
 [connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input/NameInput" to="." method="_on_name_text_submitted"]
 [connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input/HexInput" to="." method="_on_hex_text_submitted"]
 [connection signal="toggled" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery/Input/PainInput" to="." method="_on_pain_toggled"]

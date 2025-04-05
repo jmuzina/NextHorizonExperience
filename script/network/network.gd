@@ -8,11 +8,11 @@ extends Node
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
-
+ 
 const PORT = 12205
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
 const MAX_CONNECTIONS = 128
-var IS_SERVER = true
+var IS_SERVER = false
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
@@ -22,6 +22,7 @@ var players = {}
 # before the connection is made. It will be passed to every other peer.
 # For example, the value of "name" can be set to something the player
 # entered in a UI scene.
+var local_player_info
 
 var players_loaded = 0
 
@@ -30,15 +31,16 @@ func _ready():
 		create_game()
 		IS_SERVER= true
 	else: # IS CLIENT
-		var IS_SERVER = false
+		IS_SERVER = false
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
-	NetPlayerSetupControl.on_player_start.connect()
+	NetPlayerSetupControl.on_player_start.connect(join_game)
 
-func join_game(address = ""):
+func join_game(player_info, address = ""):
+	local_player_info = player_info
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
@@ -46,7 +48,7 @@ func join_game(address = ""):
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
-
+	player_info.id = multiplayer.get_unique_id()
 
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
@@ -77,14 +79,21 @@ func player_loaded():
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
-	rpc("_register_player")
+	await get_tree().create_timer(1).timeout
+	rpc_id(id, "_register_player", players)
+	rpc("_register_player", )
 
+@rpc 
+func add_previous_players(players):
+	for player in players:
+		
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
 	players[new_player_id] = new_player_info
 	player_connected.emit(new_player_id, new_player_info)
+	multiplayer.get_peers()
 
 
 func _on_player_disconnected(id):
@@ -94,9 +103,9 @@ func _on_player_disconnected(id):
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
-	players[peer_id] = player_info
-	_do_playername_checks(peer_id)
-	player_connected.emit(peer_id, player_info)
+	#players[peer_id] = player_info
+	#_do_playername_checks(peer_id)
+	#player_connected.emit(peer_id, player_info)
 
 #func _do_playername_checks(peer_id: int):
 	#if player_info.name.is_empty():
