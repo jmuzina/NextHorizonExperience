@@ -4,6 +4,8 @@ const VECTOR3_INVALID = Vector3(-1.79769e307, -1.79769e307, -1.79769e307)
 
 var interactable_looked_at: Object
 
+var input_disabled: bool = false
+
 var is_crouching: bool
 var stand_height: float
 
@@ -13,8 +15,8 @@ const CROUCH_SPEED = 2.5
 const LOOK_SENSITIVITY = 0.5
 
 @export_subgroup("Mouse Settings")
-@export var invert_mouse_x : bool
-@export var invert_mouse_y : bool
+@export var invert_mouse_x : bool = true 
+@export var invert_mouse_y : bool = true
 @export var mouse_sensitivity: Vector2 = Vector2(5,5)
 
 @export var max_step_height: float = 0.4
@@ -23,26 +25,33 @@ var _last_frame_was_on_floor = -INF
 
 var mouse_input: Vector2
 
+var player_name: String
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
 		mouse_input += event.xformed_by(viewport_transform).relative
 
 func _init() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	pass
 
 func _ready() -> void:
 	stand_height = ($CollisionShape3D.shape as CapsuleShape3D).height
 	$Camera3D.rotation = Vector3(0,0,0)
 	$CanvasLayer.set_custom_viewport($Camera3D.get_viewport())
 	$CanvasLayer.follow_viewport_enabled = true
+	%Chat.on_chat_exit.connect(func(): input_disabled = false)
+	%Chat.on_chat_sent.connect(func(): input_disabled = false)
 
 func _process(delta: float) -> void:
 	mouse_input = Vector2.ZERO
 	%TextCam.global_transform = $Camera3D.global_transform
 
 func _physics_process(delta: float) -> void:
+	if input_disabled:
+		return
+	if Input.is_key_pressed(KEY_P):
+		input_disabled = true
 	_calculate_movement(delta)
 	_calculate_look(delta)
 	
@@ -69,6 +78,10 @@ func _physics_process(delta: float) -> void:
 		_notify_interact(4)
 	if Input.is_action_just_pressed("player_num_5"):
 		_notify_interact(5)
+	if Input.is_action_just_pressed("ui_accept"):
+		input_disabled = true
+		%Chat.player_name = player_name
+		%Chat.open_chat()
 		
 func _calculate_look(delta: float) -> void:
 	var mouseInversions: Vector2 = Vector2(-1 if invert_mouse_x else 1, -1 if invert_mouse_y else 1)

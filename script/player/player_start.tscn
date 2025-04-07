@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2us5cfpjvow5"]
+
+[ext_resource type="Texture2D" uid="uid://dptuwey1ag01s" path="res://script/player/player_start.png" id="1_cud1s"]
+[ext_resource type="Script" path="res://script/player/player_start.gd" id="1_oqf4k"]
+[ext_resource type="Material" uid="uid://7cph5a3t35rn" path="res://script/player/engine_wireframe.tres" id="2_0ljs7"]
+[ext_resource type="PackedScene" uid="uid://dbd8f8ail12dy" path="res://script/player/g_player.tscn" id="2_i4jj0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ipfky"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f2d45"]
+
+[node name="PlayerStart" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_oqf4k")
+player_class = ExtResource("2_i4jj0")
+
+[node name="editor_only" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="sprite" type="Sprite3D" parent="editor_only"]
+billboard = 1
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("1_cud1s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="editor_only"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="editor_only/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_ipfky")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="editor_only"]
+material_override = ExtResource("2_0ljs7")
+mesh = SubResource("CapsuleMesh_f2d45")
+
+[node name="Label3D" type="Label3D" parent="editor_only"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43223, 0)
+billboard = 1
+render_priority = 1
+outline_render_priority = 0
+text = "PLAYER START"
+outline_size = 0

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbd8f8ail12dy"]
+[gd_scene load_steps=8 format=3 uid="uid://dbd8f8ail12dy"]
 
 [ext_resource type="Script" path="res://script/player/g_player.gd" id="1_0mupo"]
 [ext_resource type="Texture2D" uid="uid://npbaotfvgrg" path="res://view_border.png" id="2_rc5qc"]
 [ext_resource type="Theme" uid="uid://cuhanp5prmi30" path="res://engine/fb_theme.tres" id="3_hican"]
+[ext_resource type="Theme" uid="uid://betjolx27liec" path="res://script/network/chat/chat_theme.tres" id="4_2umrq"]
+[ext_resource type="Script" path="res://script/player/chatbox.gd" id="5_cf6yo"]
+[ext_resource type="PackedScene" uid="uid://csiqh7i6e5qt7" path="res://script/network/chat/chat_element.tscn" id="6_442ic"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pbfyn"]
 
@@ -43,6 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00221, 0)
 target_position = Vector3(0, -0.75, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 follow_viewport_enabled = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
@@ -105,6 +109,71 @@ vertical_alignment = 3
 offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 3
+
+[node name="Chat" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("chat_container")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_2umrq")
+script = ExtResource("5_cf6yo")
+chat_element = ExtResource("6_442ic")
+chat_container = NodePath("HBoxContainer/Panel/VBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Chat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Chat/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 120
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Chat/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Chat/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -685.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="ChatInput" type="LineEdit" parent="CanvasLayer/Chat"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -56.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+placeholder_text = "Type your message..."
+
+[node name="ChatTimer" type="Timer" parent="CanvasLayer/Chat"]
+wait_time = 4.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.689964, 0.626744, 0.559216, 1)

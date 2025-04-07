@@ -9,12 +9,12 @@
 script = ExtResource("1_n438t")
 
 [node name="NetPlayer_Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433879, 0.991972, 0)
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0, 0.0763499, 0)
 material_override = ExtResource("1_357r2")
 mesh = ExtResource("1_1oaw6")
 
 [node name="Name" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63969, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994988, 0)
 billboard = 1
 texture_filter = 0
 render_priority = 2

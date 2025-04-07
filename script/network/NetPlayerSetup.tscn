@@ -51,6 +51,7 @@ shadow_color = Color(0, 0, 0, 0.721569)
 shadow_size = 3
 
 [node name="NetPlayerSetup" type="Control"]
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,12 +212,13 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0102972, 0.8)
+cull_mask = 1048064
 current = true
 fov = 31.8256
 
 [node name="NetworkPlayer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport" instance=ExtResource("1_k7vjn")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.7, -1.92)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.575496, -1.51859)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/PreviewContainer/RenderMargins/ModelRender/SubViewport"]
 transform = Transform3D(0.530703, 0.654081, -0.53901, 0, 0.635957, 0.771724, 0.847558, -0.409557, 0.337505, 0, 1.68234, 0)
@@ -236,7 +238,6 @@ operation = 2
 size = Vector3(4, 4, 4)
 
 [node name="MarginContainer3" type="MarginContainer" parent="ContentMargin/MainContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
@@ -252,8 +253,8 @@ text = "ENTER"
 
 [connection signal="focus_entered" from="ContentMargin/MainContainer/IPInput" to="ContentMargin/MainContainer/IPInput" method="_on_focus_entered"]
 [connection signal="focus_exited" from="ContentMargin/MainContainer/IPInput" to="ContentMargin/MainContainer/IPInput" method="_on_focus_exited"]
-[connection signal="text_submitted" from="ContentMargin/MainContainer/IPInput" to="." method="_on_ip_text_submitted"]
-[connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input/NameInput" to="." method="_on_name_text_submitted"]
-[connection signal="text_submitted" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input/HexInput" to="." method="_on_hex_text_submitted"]
+[connection signal="text_changed" from="ContentMargin/MainContainer/IPInput" to="." method="_on_ip_text_submitted"]
+[connection signal="text_changed" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/NameQuery/Input/NameInput" to="." method="_on_name_text_submitted"]
+[connection signal="text_changed" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/ColorQuery/Input/HexInput" to="." method="_on_hex_text_submitted"]
 [connection signal="toggled" from="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs/PainQuery/Input/PainInput" to="." method="_on_pain_toggled"]
 [connection signal="pressed" from="ContentMargin/MainContainer/MarginContainer3/Start" to="." method="_on_start_pressed"]
