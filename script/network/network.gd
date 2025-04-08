@@ -154,7 +154,7 @@ func _on_player_disconnected(id):
 		if players[i].id == id:
 			players[i].node.queue_free()
 			players.remove_at(i)
-		
+	print(players)
 	player_disconnected.emit(id)
 
 
