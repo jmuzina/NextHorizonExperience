@@ -9,9 +9,13 @@ signal on_chat_sent
 signal on_chat_exit
 
 func _ready():
-	%ChatInput.text_submitted.connect(func(e): 
+	%ChatInput.text_submitted.connect(func(e: String): 
 		print("text submitted")
 		await get_tree().create_timer(.05).timeout
+		print(e)
+		if e == "":
+			close_chat()
+			return
 		on_chat_sent.emit()
 		visible = false
 		%ChatInput.visible = false
@@ -22,8 +26,12 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_exit"):
-		%ChatInput.visible = false
-		on_chat_exit.emit()
+		close_chat()
+	
+func close_chat():
+	%ChatInput.visible = false
+	visible=false
+	on_chat_exit.emit()
 
 func open_chat():
 	visible = true
