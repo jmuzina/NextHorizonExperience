@@ -5,8 +5,7 @@
 "mapversion" "220"
 "wad" "/home/natalie/Downloads/wad/NHX2.wad"
 "classname" "worldspawn"
-"property 1" ""
-"property 2" ""
+"_tb_soft_map_bounds" "none"
 // brush 0
 {
 ( 432 416 48 ) ( 432 352 48 ) ( 432 352 0 ) snow01 [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1

@@ -132,7 +132,7 @@ func create_local_net_player(info) -> Node3D:
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		if multiplayer.multiplayer_peer.get_connection_status() == multiplayer.multiplayer_peer.CONNECTION_CONNECTED:
+		if multiplayer.multiplayer_peer != null && multiplayer.multiplayer_peer.get_connection_status() == multiplayer.multiplayer_peer.CONNECTION_CONNECTED:
 			multiplayer.multiplayer_peer.disconnect_peer(multiplayer.get_unique_id())
 			multiplayer.multiplayer_peer = null
 		get_tree().quit() # default behavior
