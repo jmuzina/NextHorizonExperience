@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://csiqh7i6e5qt7" path="res://script/network/chat/chat_element.tscn" id="6_442ic"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pbfyn"]
+height = 1.65465
 
 [node name="GPlayer" type="CharacterBody3D"]
 floor_snap_length = 0.2
@@ -17,11 +18,11 @@ script = ExtResource("1_0mupo")
 shape = SubResource("CapsuleShape3D_pbfyn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.758252, 0)
 cull_mask = 1048573
 current = true
 fov = 90.0
-far = 10.0
+far = 9999.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)

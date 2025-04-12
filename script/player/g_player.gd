@@ -10,7 +10,7 @@ var is_crouching: bool
 var stand_height: float
 
 const CROUCH_HEIGHT = 1.4
-const SPEED = 3.0
+var SPEED = 3.0
 const CROUCH_SPEED = 2.5
 const LOOK_SENSITIVITY = 0.5
 
@@ -54,6 +54,12 @@ func _physics_process(delta: float) -> void:
 		input_disabled = true
 	_calculate_movement(delta)
 	_calculate_look(delta)
+	
+	if Input.is_key_pressed(KEY_BRACERIGHT): 
+		SPEED = 10.0
+	if Input.is_key_pressed(KEY_BRACELEFT):
+		SPEED = 3.0
+		
 	
 	_notify_player_look() 	
 	
