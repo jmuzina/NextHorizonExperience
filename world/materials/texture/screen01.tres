@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ckbswi870ja0p"]
+
+[ext_resource type="Texture2D" uid="uid://cxaskhslqs2bx" path="res://world/materials/texture/screen01.tga" id="1_3oqtm"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_3oqtm")
+texture_filter = 2

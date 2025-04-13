@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d17tfm2o8rsvp"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqhyc5tfen7w8" path="res://world/Mesh/torch.obj" id="1_n8fhy"]
+[ext_resource type="Texture2D" uid="uid://srntu6vtr5ek" path="res://world/Mesh/plaster01.jpg" id="2_10ygg"]
+[ext_resource type="SpriteFrames" uid="uid://cd2en2cvmlgc" path="res://world/materials/texture/cd_origin/torch/torch.tres" id="3_anl08"]
+[ext_resource type="Texture2D" uid="uid://dcf5i3brky6md" path="res://world/materials/texture/flare01.png" id="3_g11jw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve177"]
+albedo_texture = ExtResource("2_10ygg")
+
+[node name="Torch" type="MeshInstance3D"]
+mesh = ExtResource("1_n8fhy")
+surface_material_override/0 = SubResource("StandardMaterial3D_ve177")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501514, -0.0963211)
+pixel_size = 0.004
+billboard = 2
+sprite_frames = ExtResource("3_anl08")
+frame_progress = 0.192533
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0815824, 0)
+light_color = Color(1, 0.607843, 0, 1)
+light_energy = 2.0
+light_indirect_energy = 1.5
+light_size = 0.131
+light_bake_mode = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0300695, 0)
+layers = 2
+modulate = Color(1, 0.623441, 0.386342, 1)
+pixel_size = 0.02
+billboard = 1
+texture = ExtResource("3_g11jw")

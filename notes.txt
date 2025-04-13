@@ -1,11 +1,10 @@
 [xx] Haven Square
-[x] Concert Hall
-[x] Games Hut
-[x] Resturant Walk
+[xx] Concert Hall
+[xx] Games Hut
+[xx] Resturant Walk
 [x] Author's Guild
 [xx] Vanity Faire
 [xx] The Tavern
-[x] Down The Trail
-[x] The Mountains
-[x] Helper's Desk
-[?] Shitpost Lounge
+[xx] Down The Trail
+[xx] The Mountains
+[xx] Helper's Desk

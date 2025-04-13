@@ -10,7 +10,7 @@ var is_crouching: bool
 var stand_height: float
 
 const CROUCH_HEIGHT = 1.4
-var SPEED = 3.0
+var SPEED = 9.0
 const CROUCH_SPEED = 2.5
 const LOOK_SENSITIVITY = 0.5
 
