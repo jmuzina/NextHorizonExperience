@@ -9,6 +9,8 @@ var input_disabled: bool = false
 var is_crouching: bool
 var stand_height: float
 
+@export var chat: Control
+
 const CROUCH_HEIGHT = 1.4
 var SPEED = 9.0
 const CROUCH_SPEED = 2.5
@@ -49,7 +51,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if input_disabled:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		return
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	if Input.is_key_pressed(KEY_P):
 		input_disabled = true
 	_calculate_movement(delta)
@@ -132,6 +137,11 @@ func _calculate_movement(delta: float) -> void:
 func _notify_player_look() -> void:
 	if $Camera3D/RayCast3D.is_colliding():
 		var obj = $Camera3D/RayCast3D.get_collider()
+		print('okay')
+		#why???
+		if obj == null: 
+			print('null')
+			return
 		obj.player_lookat(self)
 		interactable_looked_at = obj
 	elif interactable_looked_at != null:
@@ -174,6 +184,18 @@ func clear_player_input_prompt():
 
 #Stairs logic, stolen basically wholesale from https://youtu.be/Tb-R3l0SQdc?si=0cWy6AenjvXxH0K8. remember to credit.
 
+func get_egg(egg_name: String, egg_desc: String, egg_image: Texture2D, node: Node3D):
+	%EggGet.populate_and_enable(egg_name, egg_desc, egg_image, node)
+	input_disabled = true
+
+func confirm_egg(egg_name):
+	chat.propogate_chat_from_outside("%s got "+ egg_name)
+	%EggGet.visible = false
+	input_disabled = false
+	
+func all_eggs():
+	chat.propogate_chat_from_outside("%s got ALL EGGS! Congrats! Remember to screenshot this message.")
+	
 func is_surface_too_steep(normal: Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
 	

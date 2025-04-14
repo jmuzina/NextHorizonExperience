@@ -39,6 +39,10 @@ func open_chat():
 	%ChatInput.grab_focus()
 	$ChatTimer.stop()
 
+func propogate_chat_from_outside(text, no_player_name = false):
+	send_chat_remote(text % [player_name])
+	rpc(text, "%s: %s" % [player_name])
+
 @rpc("any_peer", "reliable")
 func send_chat_remote(text):
 	visible = true

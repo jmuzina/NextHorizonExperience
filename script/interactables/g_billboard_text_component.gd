@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		current_passage = passage_root
 		has_late_init = true
 
-func object_interacted(modifier: int = 0) -> void:
+func object_interacted(modifier: int = 0, _player = null) -> void:
 	print("Text triggered via interaction with modifer %s" % str(modifier))
 	if (player_interacting == null):
 		return

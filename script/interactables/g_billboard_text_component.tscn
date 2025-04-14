@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdg0b4vllc1p4"]
+[gd_scene load_steps=3 format=3 uid="uid://cdg0b4vllc1p4"]
 
 [ext_resource type="Script" path="res://script/interactables/g_billboard_text_component.gd" id="1_rvwln"]
+[ext_resource type="FontFile" uid="uid://0ccti3hbp8kw" path="res://UI/ChevyRay - Lantern.ttf" id="2_nlube"]
 
 [node name="GFloatingText" type="Node3D"]
 script = ExtResource("1_rvwln")
@@ -10,9 +11,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 layers = 2
 ignore_occlusion_culling = true
 billboard = 1
+texture_filter = 1
 text = "TEXT"
-font_size = 16
-outline_size = 10
+font = ExtResource("2_nlube")
+font_size = 34
 autowrap_mode = 3
 width = 400.0
 

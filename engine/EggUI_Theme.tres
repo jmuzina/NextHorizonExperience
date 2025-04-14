@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cp2lvhk230w7h"]
+
+[ext_resource type="FontFile" uid="uid://0ccti3hbp8kw" path="res://UI/ChevyRay - Lantern.ttf" id="1_kwcks"]
+[ext_resource type="FontFile" uid="uid://dhkuel4fetba0" path="res://UI/ChevyRay - Magic Book.ttf" id="2_gtpbt"]
+
+[resource]
+Button/font_sizes/font_size = 17
+Button/fonts/font = ExtResource("1_kwcks")
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("2_gtpbt")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
