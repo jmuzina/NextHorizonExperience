@@ -12,7 +12,7 @@ var stand_height: float
 @export var chat: Control
 
 const CROUCH_HEIGHT = 1.4
-var SPEED = 9.0
+var SPEED = 4.5
 const CROUCH_SPEED = 2.5
 const LOOK_SENSITIVITY = 0.5
 

@@ -18,6 +18,9 @@ const DEFAULT_SERVER_IP = "nhx.frostbreak.org" # OVH
 const MAX_CONNECTIONS = 64
 var IS_SERVER = false
 
+var frames_til_pos_update = 6
+var current_frames = 0 
+
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
 # format: {"id"(String): (int) "name"(String): "" (String), "color"(String): (Color), "Pos"(String): (Transform)}}
@@ -33,14 +36,15 @@ var players_loaded = 0
 
 var connection_begun = false
 
+var multiplayerPeer = WebSocketMultiplayerPeer
+
 func _ready():
 	if OS.has_feature("dedserv"): # IS DEDICATED SERVER
 		create_game()
 		IS_SERVER= true
-		print("server created")
+		print("server listening at " + str(PORT))
 	else: # IS CLIENT
 		IS_SERVER = false
-		print("client")
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
@@ -54,9 +58,13 @@ func join_game(player_info, address = ""):
 	local_player_info = player_info
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
-	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	var peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
+	print("client on %s:%s" % [address, PORT])
+	
+	var error = peer.create_client(address + ":" + str(PORT))
+	await get_tree().create_timer(2).timeout
 	multiplayer.multiplayer_peer = peer
+	get_tree().set_multiplayer(multiplayer)
 	
 	if error:
 		return error
@@ -65,8 +73,8 @@ func join_game(player_info, address = ""):
 	connection_begun = true
 
 func create_game():
-	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_CONNECTIONS)
+	var peer = WebSocketMultiplayerPeer.new()
+	var error = peer.create_server(PORT)
 	if error or !multiplayer.has_multiplayer_peer():
 		return error
 	multiplayer.multiplayer_peer = peer 
@@ -79,9 +87,12 @@ func _physics_process(delta: float) -> void:
 	if  multiplayer.multiplayer_peer == null or connection_begun == false or multiplayer.multiplayer_peer.get_connection_status() != multiplayer.multiplayer_peer.CONNECTION_CONNECTED:
 		return
 	if !IS_SERVER:
-		rpc("update_player_position", LocalPlayer.transform)
+		current_frames += 1
+		if (frames_til_pos_update == current_frames):
+			rpc("update_player_position", LocalPlayer.transform)
+			current_frames = 0
 
-@rpc("any_peer", "call_remote", "unreliable")
+@rpc("any_peer", "call_remote",)
 func update_player_position(new_transform: Transform3D):
 	var id = multiplayer.get_remote_sender_id()
 	for player in players:
@@ -94,6 +105,7 @@ func update_player_position(new_transform: Transform3D):
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
+	print("CONNECTION")
 	if IS_SERVER:
 		print("connected to client ", str(id))
 		rpc_id(id, "send_new_player_info", id)
@@ -109,7 +121,7 @@ func send_new_player_info(id):
 	
 	
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer")
 func add_previous_players(remote_players):
 	players = remote_players
 	for player in players:
@@ -138,7 +150,7 @@ func _notification(what):
 		get_tree().quit() # default behavior
 
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer")
 func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
 	var i = create_local_net_player(new_player_info)

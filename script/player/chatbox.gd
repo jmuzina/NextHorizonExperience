@@ -43,8 +43,10 @@ func propogate_chat_from_outside(text, no_player_name = false):
 	send_chat_remote(text % [player_name])
 	rpc(text, "%s: %s" % [player_name])
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer")
 func send_chat_remote(text):
+	if multiplayer.is_server():
+		print(text)
 	visible = true
 	var c = chat_element.instantiate()
 	chat_container.add_child(c)
