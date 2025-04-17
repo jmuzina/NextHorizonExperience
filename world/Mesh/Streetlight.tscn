@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqeb01f4kn6g3"]
+[gd_scene load_steps=5 format=3 uid="uid://cqeb01f4kn6g3"]
 
 [ext_resource type="ArrayMesh" uid="uid://dw8ap5ibymt6b" path="res://world/Mesh/Streetlight.obj" id="1_d8exv"]
-[ext_resource type="Texture2D" uid="uid://ivdhhmar6hms" path="res://world/Mesh/wrought01.jpg" id="2_6xuim"]
+[ext_resource type="Material" uid="uid://bcc8ithnvidla" path="res://world/materials/wrought.tres" id="2_633wa"]
 [ext_resource type="Texture2D" uid="uid://dcf5i3brky6md" path="res://world/materials/texture/flare01.png" id="3_lchuv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjjoi"]
-albedo_texture = ExtResource("2_6xuim")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3o4q"]
 albedo_color = Color(0.736588, 0.614479, 0.321123, 1)
@@ -15,7 +12,7 @@ emission = Color(0.508103, 0.497538, 0.198105, 1)
 [node name="Streetlight" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_d8exv")
-surface_material_override/0 = SubResource("StandardMaterial3D_jjjoi")
+surface_material_override/0 = ExtResource("2_633wa")
 surface_material_override/1 = SubResource("StandardMaterial3D_c3o4q")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -24,12 +21,12 @@ light_color = Color(0.956595, 0.970461, 0.843364, 1)
 light_energy = 1.5
 light_indirect_energy = 1.5
 light_bake_mode = 1
-omni_range = 17.9027
+omni_range = 10.3652
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55384, 0)
-layers = 2
+sorting_offset = 1.0
 modulate = Color(0.845138, 0.871385, 0.587226, 1)
-pixel_size = 0.05
+pixel_size = 0.1
 billboard = 1
 texture = ExtResource("3_lchuv")

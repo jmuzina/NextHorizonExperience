@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://vpmbkbtsgmjb"]
+
+[ext_resource type="Script" path="res://script/interactables/interact_switch.gd" id="1_42cfn"]
+[ext_resource type="Script" path="res://script/interactables/g_use_component.gd" id="2_8jhem"]
+[ext_resource type="FontFile" uid="uid://0ccti3hbp8kw" path="res://UI/ChevyRay - Lantern.ttf" id="3_ea8x7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ufxr"]
+size = Vector3(1.39258, 2.59704, 1.57251)
+
+[node name="InteractSwitch" type="Node3D"]
+script = ExtResource("1_42cfn")
+
+[node name="UseTrigger" type="StaticBody3D" parent="." node_paths=PackedStringArray("Outlines")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_8jhem")
+Outlines = [NodePath("../Label3D")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UseTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648622, 0)
+shape = SubResource("BoxShape3D_1ufxr")
+
+[node name="Label3D" type="Label3D" parent="."]
+visible = false
+billboard = 1
+modulate = Color(1, 1, 0, 1)
+text = "!"
+font = ExtResource("3_ea8x7")
+font_size = 100

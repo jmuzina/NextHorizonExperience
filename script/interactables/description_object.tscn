@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://g6rpin1hdmdq"]
+[gd_scene load_steps=8 format=3 uid="uid://g6rpin1hdmdq"]
 
 [ext_resource type="Script" path="res://script/interactables/dialogue_object.gd" id="1_4t7e0"]
 [ext_resource type="PackedScene" uid="uid://cdg0b4vllc1p4" path="res://script/interactables/g_billboard_text_component.tscn" id="2_2qs8k"]
@@ -8,10 +8,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui5a2"]
 size = Vector3(1.39258, 2.59704, 1.57251)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8equ"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wwufw"]
+load_path = "res://.godot/imported/T_DiamondSona.png-0b6e23c62ff02ab3a730a714f9849d3b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jthgv"]
+resource_local_to_scene = true
 render_priority = -1
 transparency = 1
-albedo_texture = ExtResource("4_h1360")
+albedo_texture = SubResource("CompressedTexture2D_wwufw")
 emission_enabled = true
 emission = Color(1, 1, 0, 1)
 billboard_mode = 1
@@ -39,7 +43,7 @@ texture = ExtResource("4_h1360")
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880853, 0)
 visible = false
-material_override = SubResource("StandardMaterial3D_i8equ")
+material_override = SubResource("StandardMaterial3D_jthgv")
 pixel_size = 0.0072
 billboard = 1
 texture = ExtResource("4_h1360")

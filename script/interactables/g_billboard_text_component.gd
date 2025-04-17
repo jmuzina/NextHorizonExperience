@@ -51,9 +51,7 @@ func object_interacted(modifier: int = 0, _player = null) -> void:
 	if (player_interacting == null):
 		return
 		 
-	if current_state == state.line_finished or current_state == state.inactive: #Not done with current passage
-		current_state = state.speaking
-		continue_text()
+	
 	if current_state == state.awaiting_response: #Done with current passage
 		if modifier == 0 or modifier > current_passage.Options.size(): return #if modifier is invalid.
 		current_passage = current_passage.Options[modifier-1]
@@ -61,7 +59,10 @@ func object_interacted(modifier: int = 0, _player = null) -> void:
 		index = -1
 		player_interacting.clear_player_input_prompt()
 		continue_text()
-		
+	#if current_state == state.line_finished or current_state == state.inactive: #Not done with current passage
+	else:
+		current_state = state.speaking
+		continue_text()
 
 func begin_text():
 	

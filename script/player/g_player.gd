@@ -39,7 +39,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	stand_height = ($CollisionShape3D.shape as CapsuleShape3D).height
-	$Camera3D.rotation = Vector3(0,0,0)
+	#$Camera3D.rotation = Vector3(0,0,0)
 	$CanvasLayer.set_custom_viewport($Camera3D.get_viewport())
 	$CanvasLayer.follow_viewport_enabled = true
 	%Chat.on_chat_exit.connect(func(): input_disabled = false)
@@ -91,9 +91,13 @@ func _physics_process(delta: float) -> void:
 		_notify_interact(5)
 	if Input.is_action_just_pressed("ui_accept"):
 		input_disabled = true
-		%Chat.player_name = player_name
 		%Chat.open_chat()
-		
+	%Chat.player_name = player_name
+
+func set_camera_rotation(val: Vector3):
+	print(val)
+	$Camera3D.rotation = val * basis
+
 func _calculate_look(delta: float) -> void:
 	var mouseInversions: Vector2 = Vector2(-1 if invert_mouse_x else 1, -1 if invert_mouse_y else 1)
 	
@@ -137,8 +141,7 @@ func _calculate_movement(delta: float) -> void:
 func _notify_player_look() -> void:
 	if $Camera3D/RayCast3D.is_colliding():
 		var obj = $Camera3D/RayCast3D.get_collider()
-		print('okay')
-		#why???
+		#prevents queue_free from deleting obj between this and the next frame without the correct clearing.
 		if obj == null: 
 			print('null')
 			return
@@ -189,7 +192,7 @@ func get_egg(egg_name: String, egg_desc: String, egg_image: Texture2D, node: Nod
 	input_disabled = true
 
 func confirm_egg(egg_name):
-	chat.propogate_chat_from_outside("%s got "+ egg_name)
+	chat.propogate_chat_from_outside(("%s got "+ egg_name))
 	%EggGet.visible = false
 	input_disabled = false
 	

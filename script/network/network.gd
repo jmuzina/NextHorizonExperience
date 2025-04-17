@@ -14,7 +14,7 @@ signal player_disconnected(peer_id)
 signal server_disconnected
  
 const PORT = 12205
-const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
+const DEFAULT_SERVER_IP = "15.204.173.219" # OVH
 const MAX_CONNECTIONS = 128
 var IS_SERVER = false
 

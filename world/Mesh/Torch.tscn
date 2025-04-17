@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d17tfm2o8rsvp"]
+[gd_scene load_steps=7 format=3 uid="uid://d17tfm2o8rsvp"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqhyc5tfen7w8" path="res://world/Mesh/torch.obj" id="1_n8fhy"]
 [ext_resource type="Texture2D" uid="uid://srntu6vtr5ek" path="res://world/Mesh/plaster01.jpg" id="2_10ygg"]
 [ext_resource type="SpriteFrames" uid="uid://cd2en2cvmlgc" path="res://world/materials/texture/cd_origin/torch/torch.tres" id="3_anl08"]
 [ext_resource type="Texture2D" uid="uid://dcf5i3brky6md" path="res://world/materials/texture/flare01.png" id="3_g11jw"]
+[ext_resource type="Script" path="res://world/materials/texture/cd_origin/campfire/campfire.gd" id="4_66ubc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve177"]
 albedo_texture = ExtResource("2_10ygg")
@@ -13,11 +14,13 @@ mesh = ExtResource("1_n8fhy")
 surface_material_override/0 = SubResource("StandardMaterial3D_ve177")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501514, -0.0963211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74462, 0.0120382)
 pixel_size = 0.004
 billboard = 2
+render_priority = 2
 sprite_frames = ExtResource("3_anl08")
-frame_progress = 0.192533
+frame_progress = 0.668607
+script = ExtResource("4_66ubc")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0815824, 0)
@@ -29,8 +32,8 @@ light_bake_mode = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0300695, 0)
-layers = 2
+sorting_offset = 1.0
 modulate = Color(1, 0.623441, 0.386342, 1)
-pixel_size = 0.02
+pixel_size = 0.03
 billboard = 1
 texture = ExtResource("3_g11jw")

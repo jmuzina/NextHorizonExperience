@@ -16,7 +16,7 @@ text = "TEXT"
 font = ExtResource("2_nlube")
 font_size = 34
 autowrap_mode = 3
-width = 400.0
+width = 600.0
 
 [node name="TypewriteTimer" type="Timer" parent="."]
 unique_name_in_owner = true

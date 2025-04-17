@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bybx1wcvta6h0" path="res://world/materials/texture/metal01.jpg" id="1_orvw8"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_orvw8")
 texture_filter = 2

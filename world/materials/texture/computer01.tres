@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://be5nlu86d8u8t" path="res://world/materials/texture/computer01.jpg" id="1_yebp5"]
 
 [resource]
-shading_mode = 0
 albedo_texture = ExtResource("1_yebp5")
 texture_filter = 2

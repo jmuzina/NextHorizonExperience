@@ -16,6 +16,6 @@ func create_player(name: String ="") -> Node3D:
 	var p = player_class.instantiate()
 	get_parent().add_child(p)
 	if !name.is_empty(): p.name = name
-	(p as Node3D).transform = transform
+	p.transform = transform
 	queue_free()
 	return p

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/interactables/g_use_component.gd" id="1_sixmc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui5a2"]
-size = Vector3(1.39258, 1.2998, 1.57251)
+size = Vector3(1.39258, 1.45544, 1.57251)
 
 [node name="UseComponent" type="StaticBody3D"]
 collision_layer = 4
