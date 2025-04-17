@@ -14,8 +14,8 @@ signal player_disconnected(peer_id)
 signal server_disconnected
  
 const PORT = 12205
-const DEFAULT_SERVER_IP = "15.204.173.219" # OVH
-const MAX_CONNECTIONS = 128
+const DEFAULT_SERVER_IP = "nhx.frostbreak.org" # OVH
+const MAX_CONNECTIONS = 64
 var IS_SERVER = false
 
 # This will contain player info for every player,
