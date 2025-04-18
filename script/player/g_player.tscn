@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://script/player/egg_get.gd" id="8_vx5sw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pbfyn"]
+height = 1.7
 
 [sub_resource type="LabelSettings" id="LabelSettings_j76d5"]
 font_size = 9

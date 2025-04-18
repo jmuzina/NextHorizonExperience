@@ -29,6 +29,7 @@ var CurrentText: String = ""
 var CurrentCharIdx: int = 0
 var current_state: state
 
+
 var has_late_init = false
 
 const passages_script = preload("res://script/interactables/g_billboard_passages.gd")
@@ -36,7 +37,7 @@ const passages_script = preload("res://script/interactables/g_billboard_passages
 func _ready() -> void:
 	$CurrentText.text = ""
 	$TypewriteTimer.timeout.connect(_write_char)
-	%TimeoutTimer.timeout.connect(_reset_self)
+	$TimeoutTimer.timeout.connect(_reset_self)
 		
 	index = -1
 		

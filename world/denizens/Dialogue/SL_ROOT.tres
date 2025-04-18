@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://88mjcjhh7ael"]
+
+[ext_resource type="Resource" uid="uid://buitfbwskodbe" path="res://world/denizens/Dialogue/SL_Leaving.tres" id="1_fpjli"]
+[ext_resource type="Script" path="res://script/interactables/g_billboard_passages.gd" id="2_7ignm"]
+[ext_resource type="Resource" uid="uid://r12qrkxrr37" path="res://world/denizens/Dialogue/SL_Tech.tres" id="2_7wvbe"]
+[ext_resource type="Resource" uid="uid://c1uf2ufqj58it" path="res://world/denizens/Dialogue/SL_Bye.tres" id="3_xksj8"]
+
+[resource]
+script = ExtResource("2_7ignm")
+Passages = Array[String](["[S]: Hello again.  Thank you for helping us.", "[L]: Yeah, thank you."])
+branch_end = false
+Options = Array[Resource]([ExtResource("1_fpjli"), ExtResource("2_7wvbe"), ExtResource("3_xksj8")])
+SelectionText = ""

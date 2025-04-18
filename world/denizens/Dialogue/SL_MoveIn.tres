@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bsjxcb812n0xi"]
+
+[ext_resource type="Resource" uid="uid://r12qrkxrr37" path="res://world/denizens/Dialogue/SL_Tech.tres" id="1_fqqqm"]
+[ext_resource type="Resource" uid="uid://c1uf2ufqj58it" path="res://world/denizens/Dialogue/SL_Bye.tres" id="2_on81j"]
+[ext_resource type="Script" path="res://script/interactables/g_billboard_passages.gd" id="2_w56ts"]
+
+[resource]
+script = ExtResource("2_w56ts")
+Passages = Array[String](["[L]: Oh I have no idea.  I mean, it's really different from our world, and if any of our tech breaks there's no one to fix it, and our cat is on the spaceship somewhere, and", "[S]: No."])
+branch_end = false
+Options = Array[Resource]([ExtResource("1_fqqqm"), ExtResource("2_on81j")])
+SelectionText = "Are you gonna move in?"

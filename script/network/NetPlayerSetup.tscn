@@ -146,6 +146,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Quindarious"
 max_length = 32
+context_menu_enabled = false
 caret_blink = true
 
 [node name="ColorQuery" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs"]
@@ -167,6 +168,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "#123456"
 max_length = 32
+context_menu_enabled = false
 caret_blink = true
 
 [node name="PainQuery" type="VBoxContainer" parent="ContentMargin/MainContainer/MenuPanel/MenuMargins/MenuDivider/Inputs"]

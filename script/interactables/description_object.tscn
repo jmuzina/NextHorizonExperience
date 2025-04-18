@@ -50,3 +50,5 @@ texture = ExtResource("4_h1360")
 
 [node name="GFloatingText" parent="." instance=ExtResource("2_2qs8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00748575, 1.70771, 0)
+
+[connection signal="OnTextEnd" from="GFloatingText" to="." method="_on_text_end"]

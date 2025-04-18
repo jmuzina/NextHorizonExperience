@@ -192,12 +192,12 @@ func get_egg(egg_name: String, egg_desc: String, egg_image: Texture2D, node: Nod
 	input_disabled = true
 
 func confirm_egg(egg_name):
-	chat.propogate_chat_from_outside(("%s got "+ egg_name))
+	%Chat.propogate_chat_from_outside(("%s got "+ egg_name))
 	%EggGet.visible = false
 	input_disabled = false
 	
 func all_eggs():
-	chat.propogate_chat_from_outside("%s got ALL EGGS! Congrats! Remember to screenshot this message.")
+	%Chat.propogate_chat_from_outside("%s got ALL EGGS! Congrats! Remember to screenshot this message.")
 	
 func is_surface_too_steep(normal: Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
