@@ -10142,7 +10142,7 @@ texture = ExtResource("85_uhl3k")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Eggs/PERF_INTER"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576568, 0)
 stream = ExtResource("86_ugbay")
-volume_db = -2.0
+volume_db = -62.696
 script = ExtResource("87_rfjll")
 
 [node name="ART_EGG" parent="Eggs" instance=ExtResource("14_36i2r")]

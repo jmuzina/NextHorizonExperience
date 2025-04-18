@@ -16,10 +16,9 @@ font_size = 9
 outline_size = 1
 outline_color = Color(0.0627451, 0, 0, 1)
 
-[node name="GPlayer" type="CharacterBody3D" node_paths=PackedStringArray("chat")]
+[node name="GPlayer" type="CharacterBody3D"]
 floor_snap_length = 0.2
 script = ExtResource("1_0mupo")
-chat = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_pbfyn")

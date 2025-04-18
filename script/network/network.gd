@@ -14,7 +14,7 @@ signal player_disconnected(peer_id)
 signal server_disconnected
  
 const PORT = 12205
-const DEFAULT_SERVER_IP = "nhx.frostbreak.org" # OVH
+const DEFAULT_SERVER_IP = "wss://nhx.frostbreak.org" # OVH
 const MAX_CONNECTIONS = 64
 var IS_SERVER = false
 
@@ -60,8 +60,8 @@ func join_game(player_info, address = ""):
 		address = DEFAULT_SERVER_IP
 	var peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
 	print("client on %s:%s" % [address, PORT])
-	
-	var error = peer.create_client(address + ":" + str(PORT))
+	var tt = load("res://cert.crt")
+	var error = peer.create_client(address + ":" + str(PORT), TLSOptions.client_unsafe(tt))
 	await get_tree().create_timer(2).timeout
 	multiplayer.multiplayer_peer = peer
 	get_tree().set_multiplayer(multiplayer)
@@ -73,8 +73,10 @@ func join_game(player_info, address = ""):
 	connection_begun = true
 
 func create_game():
-	var peer = WebSocketMultiplayerPeer.new()
-	var error = peer.create_server(PORT)
+	var peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
+	var b = load("res://key.key")
+	var c = load("res://cert.crt")
+	var error = peer.create_server(PORT, "*", TLSOptions.server(b, c))
 	if error or !multiplayer.has_multiplayer_peer():
 		return error
 	multiplayer.multiplayer_peer = peer 
