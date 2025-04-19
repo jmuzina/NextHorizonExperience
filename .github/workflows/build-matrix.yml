@@ -62,6 +62,11 @@ jobs:
           ./godot --headless --export-release "${{ matrix.release_identifier }}"
           rm -rf godot templates
 
+      - name: Rename Web Client HTML to index
+        if: ${{ matrix.release_identifier == 'web_client' }}
+        shell: bash
+        run: mv build/web_client/NextHorizon.html build/web_client/index.html
+
       - name: Archive build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -180,14 +185,7 @@ jobs:
       - name: Compress artifact
         shell: bash
         id: compress_artifact
-        run: |
-          if "${{ matrix.release_identifier }}" == "web_client" ]]; then
-            mv build/NextHorizon.html build/index.html
-          fi
-          
-          tree build
-          
-          zip -r ${{ matrix.release_identifier }}.zip build
+        run: zip -r ${{ matrix.release_identifier }}.zip build
 
       - name: Upload Release Asset
         env:
