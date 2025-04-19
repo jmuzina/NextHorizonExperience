@@ -93,7 +93,7 @@ jobs:
           username: ${{ secrets.WEB_DEPLOY_USERNAME }}
           password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
           port: ${{ secrets.WEB_DEPLOY_PORT }}
-          source: build/web_client
+          source: .
           target: ${{ secrets.WEB_DEPLOY_PATH }}
           tar_tmp_path: ${{ secrets.WEB_DEPLOY_TEMP_PATH }}
           rm: false
