@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clc8l3jtfkvfp"]
+[gd_scene load_steps=16 format=3 uid="uid://clc8l3jtfkvfp"]
 
 [ext_resource type="PackedScene" uid="uid://c8s0wkmggt7g" path="res://script/network/network_player_preview.tscn" id="1_k7vjn"]
 [ext_resource type="Theme" uid="uid://dcashv8k2dmnx" path="res://UI/net_setup_theme.tres" id="1_q0ai7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c7fyy25685wqa" path="res://UI/wood02.jpg" id="2_xw11k"]
 [ext_resource type="Script" path="res://script/network/ip_override.gd" id="4_8hm4i"]
 [ext_resource type="FontFile" uid="uid://dhkuel4fetba0" path="res://UI/ChevyRay - Magic Book.ttf" id="4_b0bn7"]
+[ext_resource type="FontFile" uid="uid://28qvp2ywthc" path="res://script/player/ChevyRay - Babyblocks.ttf" id="4_tytvx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_air3g"]
 texture = ExtResource("2_xw11k")
@@ -69,6 +70,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_air3g")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 3.0
+offset_right = 320.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("4_tytvx")
+theme_override_font_sizes/font_size = 8
+text = "V 1.0 (RC0)"
 
 [node name="ContentMargin" type="MarginContainer" parent="."]
 layout_mode = 1
