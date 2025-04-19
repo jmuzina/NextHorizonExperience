@@ -1,0 +1,107 @@
+name: Build Godot (Matrix)
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  install:
+    name: Install Godot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository for action
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/actions/
+
+      - name: Install and archive Godot & export templates
+        uses: ./.github/actions/install-godot
+        with:
+          archive: 'true'
+
+  build:
+    name: Build for ${{ matrix.release_identifier }}
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        release_identifier:
+          - web_client
+          - linux_server
+          - linux_client
+          - windows_client
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Download Godot & export templates
+        uses: actions/download-artifact@v4
+        with:
+          name: godot-install
+
+      - name: Move export templates into place
+        uses: ./.github/actions/move-godot-export-templates
+
+      - name: Build Godot Project
+        shell: bash
+        run: |
+          mkdir -p build/${{ matrix.release_identifier }}
+          chmod +x ./godot
+          ./godot --headless --export-release "${{ matrix.release_identifier }}"
+          rm -rf godot templates
+
+      - name: Archive build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: build
+          retention-days: 1
+          name: godot-build-${{ matrix.release_identifier }}
+
+  tag:
+    name: Tag and Release
+
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository code (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: build-artifacts
+
+      - name: List downloaded artifacts (for debugging)
+        run: ls -R build-artifacts
+
+      - name: Determine Tag Name
+        id: tagger
+        shell: bash
+        run: |
+          TAG_NAME="release-$(date +%Y%m%d-%H%M%S)"
+          echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          tag_name: ${{ steps.tagger.outputs.tag_name }}
+          name: Release ${{ steps.tagger.outputs.tag_name }}
+          draft: true
+          files: build-artifacts/**/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
