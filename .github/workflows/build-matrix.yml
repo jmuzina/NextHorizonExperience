@@ -81,6 +81,11 @@ jobs:
         with:
           name: godot-build-web_client
 
+      - name: Show files
+        shell: bash
+        run: |
+          tree
+
       - name: Upload updated flask code
         uses: appleboy/scp-action@v0.1.7
         with:
