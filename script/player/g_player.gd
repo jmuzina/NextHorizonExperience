@@ -5,6 +5,7 @@ const VECTOR3_INVALID = Vector3(-1.79769e307, -1.79769e307, -1.79769e307)
 var interactable_looked_at: Object
 
 var input_disabled: bool = false
+var input_override: bool = false
 
 var is_crouching: bool
 var stand_height: float
@@ -48,15 +49,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	mouse_input = Vector2.ZERO
 	%TextCam.global_transform = $Camera3D.global_transform
+	if Input.is_action_just_pressed("player_exit"):
+		input_override = !input_override
 
 func _physics_process(delta: float) -> void:
-	if input_disabled:
-		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	if input_disabled or input_override:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	if Input.is_key_pressed(KEY_P):
-		input_disabled = true
 	_calculate_movement(delta)
 	_calculate_look(delta)
 	
@@ -188,6 +189,7 @@ func clear_player_input_prompt():
 #Stairs logic, stolen basically wholesale from https://youtu.be/Tb-R3l0SQdc?si=0cWy6AenjvXxH0K8. remember to credit.
 
 func get_egg(egg_name: String, egg_desc: String, egg_image: Texture2D, node: Node3D):
+	input_disabled = true
 	%EggGet.populate_and_enable(egg_name, egg_desc, egg_image, node)
 	input_disabled = true
 

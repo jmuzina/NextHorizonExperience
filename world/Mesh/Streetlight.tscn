@@ -21,10 +21,10 @@ surface_material_override/1 = SubResource("StandardMaterial3D_c3o4q")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.43425, 0)
 light_color = Color(0.956595, 0.970461, 0.843364, 1)
-light_energy = 1.5
-light_indirect_energy = 1.5
+light_energy = 2.0
+light_indirect_energy = 2.0
 light_bake_mode = 1
-omni_range = 10.3652
+omni_range = 50.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55384, 0)
