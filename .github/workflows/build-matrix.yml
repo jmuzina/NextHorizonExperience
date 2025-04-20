@@ -142,8 +142,7 @@ jobs:
             --latest \
             --generate-notes \
             --target main \
-            --verify-tag \
-            --fail-on-no-commits \
+            --verify-tag
 
   add_artifacts_to_release:
     name: Add artifacts to release
