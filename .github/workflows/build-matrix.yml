@@ -75,34 +75,29 @@ jobs:
           retention-days: 1
           name: godot-build-${{ matrix.release_identifier }}
 
-  deploy_web_client:
-    name: Deploy web client
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: godot-build-web_client
-
-      - name: Show files
-        shell: bash
-        run: |
-          tree
-
-      - name: Upload updated flask code
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.WEB_DEPLOY_HOST }}
-          username: ${{ secrets.WEB_DEPLOY_USERNAME }}
-          password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
-          port: ${{ secrets.WEB_DEPLOY_PORT }}
-          source: .
-          target: ${{ secrets.WEB_DEPLOY_PATH }}
-          tar_tmp_path: ${{ secrets.WEB_DEPLOY_TEMP_PATH }}
-          rm: false
-          timeout: 60s
+#  deploy_web_client:
+#    name: Deploy web client
+#    needs: build
+#    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download build artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: godot-build-web_client
+#
+#      - name: Upload web artifact
+#        uses: appleboy/scp-action@v0.1.7
+#        with:
+#          host: ${{ secrets.WEB_DEPLOY_HOST }}
+#          username: ${{ secrets.WEB_DEPLOY_USERNAME }}
+#          password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
+#          port: ${{ secrets.WEB_DEPLOY_PORT }}
+#          source: .
+#          target: ${{ secrets.WEB_DEPLOY_PATH }}
+#          tar_tmp_path: ${{ secrets.WEB_DEPLOY_TEMP_PATH }}
+#          rm: false
+#          timeout: 60s
 
   tag_draft_release:
     name: Tag and Draft Release
